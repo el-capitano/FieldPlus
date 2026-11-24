@@ -1,0 +1,67 @@
+# FieldPlus Git Ignore Rules
+
+# Android Build & Cache
+.gradle/
+android/.gradle/
+.kotlin/
+android/.kotlin/
+build/
+android/build/
+android/app/build/
+android/*/build/
+*.apk
+*.aab
+android/.cxx/
+android/app/.cxx/
+android/.externalNativeBuild/
+
+# Android Signing Keys & Credentials (CRITICAL)
+*.jks
+*.keystore
+*.key
+android/key.properties
+android/local.properties
+android/fieldplus-upload.jks
+
+# IDE & Editor Specific
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Web Admin Overrides & Secrets
+web-admin/config.local.php
+web-admin/.env
+web-admin/.env.*
+!web-admin/.env.example
+
+# Uploaded Media in Web Admin (keep structure)
+web-admin/public/uploads/*
+!web-admin/public/uploads/.htaccess
+!web-admin/public/uploads/index.html
+!web-admin/public/uploads/.gitkeep
+
+# Temporary Logs & Render Dumps
+*.log
+*.mp4
+*.wav
+chrome_out.txt
+rendered_dom.txt
+test_map.html
+test_rendered.html
+task_plan.md
+findings.md
+progress.md

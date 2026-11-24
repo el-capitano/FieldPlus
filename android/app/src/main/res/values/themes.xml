@@ -1,0 +1,17 @@
+<resources>
+    <style name="Theme.FieldPlus" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="appBarLayoutStyle">@style/Widget.FieldPlus.AppBarLayout</item>
+    </style>
+
+    <style name="Widget.FieldPlus.AppBarLayout" parent="Widget.Material3.AppBarLayout">
+        <item name="liftOnScroll">false</item>
+        <item name="elevation">0dp</item>
+    </style>
+</resources>

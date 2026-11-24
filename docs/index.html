@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FieldPlus — Offline-First Mobile Survey & GPS Telematics Platform</title>
+  <meta name="description" content="Enterprise offline-first field inspection platform with Native Android (Kotlin, Material 3) and full-stack Web Admin (PHP 8.2, MySQL, Leaflet)." />
+  <link rel="icon" type="image/png" href="assets/images/01_app_icon_512x512.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gradient-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18), transparent 70%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/01_app_icon_512x512.png" alt="FieldPlus Logo" class="w-9 h-9 rounded-xl shadow-md border border-slate-200 dark:border-slate-700" />
+          <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">Field<span class="text-blue-600 dark:text-blue-400">Plus</span></span>
+          <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">v1.3.9</span>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <a href="#features" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Features</a>
+          <a href="#telematics" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">GPS Telematics</a>
+          <a href="#showcase" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Screenshots</a>
+          <a href="#architecture" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Architecture</a>
+          <a href="privacy.html" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Privacy</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="https://github.com/el-capitano/FieldPlus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold bg-slate-900 text-white hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500 shadow-sm transition-all transform hover:-translate-y-0.5">
+            <i class="fa-brands fa-github text-base"></i>
+            <span>GitHub Repository</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pt-12 pb-20 gradient-glow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 border border-blue-200 text-blue-700 dark:bg-blue-950/70 dark:border-blue-800 dark:text-blue-300 mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Offline-First Native Android (Kotlin) & Full-Stack Web Admin (PHP / MySQL)
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-950 dark:text-white max-w-4xl mx-auto leading-tight sm:leading-none mb-6">
+        Enterprise Field Surveys & Continuous Telematics. <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">100% Offline-First.</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed mb-10">
+        Empower site inspectors, utility engineers, and research teams to capture dynamic inspection forms, continuous GPS tracks, vector digital signatures, voice notes, and instant branded A4 PDF reports—even in zero-connectivity environments.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="https://github.com/el-capitano/FieldPlus" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5">
+          <i class="fa-brands fa-github text-lg"></i>
+          <span>Explore Source Code</span>
+        </a>
+        <a href="#showcase" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 shadow-sm transition-all">
+          <i class="fa-solid fa-mobile-screen text-blue-600 dark:text-blue-400"></i>
+          <span>View App Screenshots</span>
+        </a>
+        <a href="#telematics" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/60 shadow-sm transition-all">
+          <i class="fa-solid fa-route text-emerald-600 dark:text-emerald-400"></i>
+          <span>GPS Telematics Demo</span>
+        </a>
+      </div>
+
+      <!-- Hero Visual Banner -->
+      <div class="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 dark:border-slate-800/80">
+        <img src="assets/images/02_feature_graphic_1024x500.png" alt="FieldPlus Platform Overview" class="w-full h-auto object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Pillars Section -->
+  <section id="features" class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Pillars of Excellence</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight">Engineered for mission-critical fieldwork</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Card 1 -->
+        <div class="p-6 rounded-2xl glass-card hover:shadow-xl transition-all border border-slate-200/80 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xl mb-5">
+            <i class="fa-solid fa-bolt-lightning"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">100% Offline-First</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Room SQLite persistence engine caches templates, drafts, and evidence media locally. Outbox synchronization queues uploads until reliable connectivity returns.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-2xl glass-card hover:shadow-xl transition-all border border-slate-200/80 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-xl mb-5">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Continuous GPS Tracks</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Dual-provider hardware GNSS capture, 1-minute milestone clustering, real-time travel bearings, speed metrics, and instant GPX, KML, and GeoJSON route exports.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-2xl glass-card hover:shadow-xl transition-all border border-slate-200/80 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl mb-5">
+            <i class="fa-solid fa-shapes"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Visual Form Builder</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Drag-and-drop web designer with interactive live phone emulator. Supports 14+ control types: barcodes, voice notes, video, digital signatures, and math logic.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-6 rounded-2xl glass-card hover:shadow-xl transition-all border border-slate-200/80 dark:border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 text-xl mb-5">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Native PDF Audit Reports</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Generates multi-page branded A4 certificates with high-resolution photo evidence, map snapshots, supervisor signoffs, and instant Android Sharesheet dispatch.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GPS Telematics Highlight -->
+  <section id="telematics" class="py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300 mb-4">
+            <i class="fa-solid fa-satellite-dish"></i> Advanced Telematics Engine
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight mb-6">
+            1-Minute Milestone Clustering with True Route Fidelity
+          </h2>
+          <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+            Unlike basic map tools that either drop a single pin or overload the screen with hundreds of overlapping markers, FieldPlus records high-frequency fixes while rendering clean 1-minute milestones on the map with rotated travel-heading arrows.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-sm">Clutter-Free Map Markers</strong>
+                <span class="text-xs text-slate-600 dark:text-slate-400">Milestone pins are clustered to ~1-minute intervals with azimuth arrows ($0^\circ - 360^\circ$).</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-sm">Full Telematics Log Table</strong>
+                <span class="text-xs text-slate-600 dark:text-slate-400">100% of recorded fixes remain accessible in the audit table with speeds, leg distances, and altitudes.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xs mt-1 shrink-0">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block text-sm">Universal GIS & Map Export</strong>
+                <span class="text-xs text-slate-600 dark:text-slate-400">One-click downloads in GPX, KML, and GeoJSON formats, plus direct Google Maps and OpenStreetMap links.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800">
+            <img src="assets/images/06_screenshot_4_gps_satellite_map.png" alt="GPS Route Telematics" class="w-full h-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Gallery Section -->
+  <section id="showcase" class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Native Mobile Experience</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight">Built with Google Material Design 3</p>
+        <p class="text-slate-600 dark:text-slate-300 mt-3 text-sm">Targeting Android 16 (API 36) with edge-to-edge system insets and smooth responsive layouts.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="group rounded-2xl overflow-hidden glass-card shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200/80 dark:border-slate-800">
+          <img src="assets/images/03_screenshot_1_forms_catalog.png" alt="Forms Catalog" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Forms & Audits Catalog</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Multi-category survey catalog with real-time sync indicators.</p>
+          </div>
+        </div>
+
+        <div class="group rounded-2xl overflow-hidden glass-card shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200/80 dark:border-slate-800">
+          <img src="assets/images/04_screenshot_2_live_form_inspection.png" alt="Dynamic Form Engine" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Dynamic Form Engine</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Material 3 controls, real-time input validation, and media pickers.</p>
+          </div>
+        </div>
+
+        <div class="group rounded-2xl overflow-hidden glass-card shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200/80 dark:border-slate-800">
+          <img src="assets/images/05_screenshot_3_evidence_and_outbox.png" alt="Evidence & Outbox" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">Evidence & Outbox Sync</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Draft state manager, attachments gallery, and background upload queue.</p>
+          </div>
+        </div>
+
+        <div class="group rounded-2xl overflow-hidden glass-card shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200/80 dark:border-slate-800">
+          <img src="assets/images/06_screenshot_4_gps_satellite_map.png" alt="GPS Route Map" class="w-full h-auto transform group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4 bg-white dark:bg-slate-800 border-t border-slate-100 dark:border-slate-700">
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white">GPS Route Telematics</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Interactive Leaflet satellite route, timeline log, and GIS exports.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Architecture & Stack -->
+  <section id="architecture" class="py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-2">Full-Stack Architecture</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-950 dark:text-white tracking-tight">Robust, Modern & Extensible</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Android Stack -->
+        <div class="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400 flex items-center justify-center text-xl">
+              <i class="fa-brands fa-android"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white">Native Android Client</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Kotlin 2.0+ • Material 3 • Android SDK 24..36</p>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>UI & Layout:</strong> Material Design 3, ViewBinding, edge-to-edge system insets</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>Offline Storage:</strong> Room SQLite DB with Flow and DAO entities</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>Networking:</strong> Retrofit 2, OkHttp with multipart payload streaming</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>Sensors:</strong> FusedLocationProviderClient + GNSS LocationManager</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>Document Engine:</strong> Native Canvas PdfDocument A4 generation</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i><strong>Optimization:</strong> R8 ProGuard full code shrinking and obfuscation</li>
+          </ul>
+        </div>
+
+        <!-- Web Admin Stack -->
+        <div class="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg text-slate-900 dark:text-white">Web Admin & REST Backend</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">PHP 8.2+ • MySQL 8.0+ • Leaflet.js • Bootstrap 5</p>
+            </div>
+          </div>
+
+          <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>Form Builder:</strong> Drag-and-drop designer with live mobile simulator</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>Audit Workflow:</strong> Supervisor signoff (Approve, Flag, Reject) & immutable audit trail</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>Security:</strong> CSRF session tokens, SQL PDO prepared statements, sanitization</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>Mapping:</strong> Leaflet with OpenStreetMap, CartoDB, and Satellite tiles</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>Data Pipelines:</strong> Instant bulk export to CSV, JSON, GPX, and KML</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-500"></i><strong>RBAC:</strong> Administrator, Supervisor, and Field Officer permission tiers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/01_app_icon_512x512.png" alt="FieldPlus" class="w-8 h-8 rounded-lg" />
+          <span class="font-bold text-base text-slate-900 dark:text-white">FieldPlus</span>
+          <span class="text-xs text-slate-500 dark:text-slate-400">© 2026 Majed Khaznadar. Open-source under MIT License.</span>
+        </div>
+
+        <div class="flex items-center space-x-6 text-sm font-medium">
+          <a href="https://github.com/el-capitano/FieldPlus" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">GitHub</a>
+          <a href="privacy.html" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Privacy Policy</a>
+          <a href="https://github.com/el-capitano/FieldPlus/blob/main/README.md" class="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Documentation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

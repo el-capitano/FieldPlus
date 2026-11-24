@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FieldPlus</string>
+    <string name="title_forms">Forms Catalog</string>
+    <string name="title_submissions">Submissions &amp; Outbox</string>
+    <string name="title_settings">Server Settings</string>
+    <string name="action_sync">Sync All</string>
+    <string name="action_refresh">Refresh Forms</string>
+    <string name="action_save_draft">Save Draft</string>
+    <string name="action_finalize">Finalize &amp; Queue</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_capture_gps">Capture GPS Location</string>
+    <string name="action_take_photo">Take Photo</string>
+    <string name="action_choose_photo">Gallery</string>
+    <string name="default_server_url">http://10.0.2.2:8080/api</string>
+</resources>

@@ -1,0 +1,26 @@
+# Disable PHP engine execution
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+
+# Block execution of any scripts
+Options -Indexes -ExecCGI
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .cgi .pl .py .sh .bash .exe .cmd .bat
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar .cgi .pl .py .sh .bash .exe .cmd .bat
+
+<FilesMatch "(?i)\.(php|phtml|php3|php4|php5|php7|php8|phar|sh|bash|pl|py|cgi|asp|aspx|jsp|exe|cmd|bat)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Only serve static media extensions
+<FilesMatch "(?i)\.(jpg|jpeg|png|webp|gif|mp4|mov|3gp|mkv|avi|pdf|csv|txt)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
